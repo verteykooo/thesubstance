@@ -78,7 +78,7 @@ header {
 }
 
 .invisible-container {
-    height: 200px; /* Установите фиксированную высоту */
+    height: 100px; /* Установите фиксированную высоту */
     background-color: rgba(255, 255, 255, 0); /* Прозрачный фон */
 }
 
