@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Substance / Order</title>
+    <script src="anim.js" defer></script>
+    <link rel="stylesheet" href="order.css">
+</head>
+<body>
+    <div class="page-container">
+        <header>
+            <div class="container">
+                <nav>
+                    <img src="https://i.imgur.com/K6kOSyg.png" alt="Logo" class="logo-image">
+                    <img src="https://i.imgur.com/d7jQO7k.png" alt="Logos" class="logo-imagee">
+                </nav>
+            </div>
+        </header>
+
+        <section class="product">
+            <div class="container">
+                <div class="product-item">
+                    <img src="https://the-activator.com/cdn/shop/files/1.png?v=1732215686" alt="Товар" class="product-image">
+                    <h3 class="product-title">The Substance Package</h3>
+                    <button class="order-button">Заказать</button>
+                </div>
+                <div class="invisible-container"></div> <!-- Невидимый контейнер -->
+            </div>
+        </section>
+
+        <section class="order-form" style="display: none;">
+            <div class="container">
+                <h2>Оформление заказа</h2>
+                <p>Введите ваш адрес и номер телефона:</p>
+                <form id="form">
+                    <input type="text" id="address" placeholder="Ваш адрес" required>
+                    <input type="tel" id="phone" placeholder="Ваш номер телефона" required>
+                    <button type="submit" id="submit-order">Заказать</button>
+                </form>
+                <p id="order-message" style="display: none;">Заказ успешно оформлен! Мы свяжемся с вами для уточнения деталей доставки.</p>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <p>©2025 ChatGPT, Мамиев Ерасыл, Жумагали Адилет | 
+                   Email: TheSubstance@gmail.com | 
+                   Телефон: 323-310-5332</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Получаем необходимые элементы
+        const orderButton = document.querySelector('.order-button');
+        const orderForm = document.querySelector('.order-form');
+        const productItem = document.querySelector('.product-item');
+        const form = document.getElementById('form');
+        const orderMessage = document.getElementById('order-message');
+
+        // Обработчик события для кнопки "Заказать"
+        orderButton.addEventListener('click', () => {
+            productItem.style.display = 'none'; // Скрываем товар
+            orderForm.style.display = 'block'; // Показываем форму
+        });
+
+        // Обработчик события для формы
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // Отменяем стандартное поведение формы
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+
+            if (address && phone) {
+                orderMessage.style.display = 'block'; // Показываем сообщение о заказе
+                orderMessage.textContent = 'Заказ успешно оформлен! Мы свяжемся с вами для уточнения деталей доставки.';
+                
+                // Очищаем поля формы после отправки
+                form.reset();
+
+                // Скрываем форму через 5 секунд
+                setTimeout(() => {
+                    orderForm.style.display = 'none';
+                    productItem.style.display = 'block'; // Показываем товар обратно
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>
